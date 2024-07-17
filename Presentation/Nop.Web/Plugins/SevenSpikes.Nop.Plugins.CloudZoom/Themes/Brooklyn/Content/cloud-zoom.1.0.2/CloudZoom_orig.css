@@ -1,0 +1,136 @@
+/*
+* Copyright 2016 Seven Spikes Ltd. All rights reserved. (http://www.nop-templates.com)
+* http://www.nop-templates.com/t/licensinginfo
+*/
+
+@media all and (max-width: 1024px) {
+
+    #sevenspikes-cloud-zoom:before {
+        display: none;
+    }
+
+    #sevenspikes-cloud-zoom img {
+        position: static;
+    }
+}
+
+@media all and (min-width: 1025px) {
+
+    /* Initial positions until the cloud zoom initializes, so that the image does not jump until the wrap elemet is added, because currently the image is position through this wrap element */
+    #sevenspikes-cloud-zoom .cloud-zoom {
+        position: relative;
+    }
+    #sevenspikes-cloud-zoom .cloud-zoom img {
+        position: static;
+    }
+
+    /* theme overwritting styles */
+
+    .gallery {
+        font-size: 0;
+    }
+
+        .gallery .picture-wrapper {
+            float: left;
+        }
+
+            .gallery .picture-wrapper .picture:before {
+                display: none;
+            }
+
+    /* main picture styles */
+
+    #sevenspikes-cloud-zoom {
+        overflow: visible;
+        text-align: center;
+        font-size: 0;
+        margin: 0;
+    }
+
+        #sevenspikes-cloud-zoom:before {
+            display: none;
+        }
+
+    #wrap {
+        display: inline-block;
+        max-width: 100%;
+        line-height: 0;
+        vertical-align: middle;
+    }
+
+        #wrap a {
+            display: inline-block !important;
+            max-width: 100%;
+            line-height: 0;
+            vertical-align: middle;
+        }
+
+        #wrap img {
+            position: static !important;
+        }
+
+        /* This is the overlay element. */
+
+        #wrap > .mousetrap {
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+    .cloud-zoom-lens {
+        margin: 0;
+        border: none;
+        background-color: #fff;
+        cursor: crosshair;
+    }
+
+    /* This is the zoom window. */
+
+    #cloudZoomWindowElement {
+        left: 0;
+        top: 0;
+        z-index: 1;
+    }
+
+    #cloud-zoom-big {
+        border: none;
+        overflow: hidden;
+    }
+
+    .overview #cloud-zoom-big {
+        position: static !important; /* fix for the zoom window so that its wrapper takes the dimensions */
+    }
+
+    /* This is for the title text. */
+
+    .cloud-zoom-title {
+        background-color: #fff;
+        padding: 10px;
+        text-align: center;
+        font-size: 14px;
+        line-height: normal;
+        font-weight: bold;
+        color: #444;
+    }
+
+    /* This is the loading message. */
+
+    .cloud-zoom-loading {
+        background: #000;
+        padding: 3px;
+        color: #fff;
+        font-size: 12px;
+    }
+
+    /* with product ribbons enabled */
+
+    .gallery .ribbon-wrapper {
+        /*never display as inline or inline-block*/
+        vertical-align: middle;
+        line-height: 0;
+    }
+
+        .gallery .ribbon-wrapper:hover .ribbon-position {
+            opacity: 0;
+        }
+}

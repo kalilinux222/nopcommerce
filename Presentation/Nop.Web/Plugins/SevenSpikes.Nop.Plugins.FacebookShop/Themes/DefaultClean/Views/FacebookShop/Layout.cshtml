@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Facebook store</title>
+
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+        
+        @Html.NopCssFiles(this.Url, ResourceLocation.Head)
+
+        <script src="@Url.Content("~/Plugins/SevenSpikes.Nop.Plugins.FacebookShop/Scripts/jquery-1.11.2.min.js")"></script>
+
+        @Html.NopScripts(this.Url, ResourceLocation.Head)
+    </head>
+    <body>
+        <div class="master-wrapper-page">
+            @Html.Partial("Header")
+            <div class="header-menu">
+                @Html.Action("CategoryNavigation", "FacebookShop")
+            </div>
+            <div class="master-wrapper-main">
+                @RenderBody()
+            </div>
+            @Html.Action("Footer", "FacebookShop")
+        </div>
+        @Html.NopCssFiles(this.Url, ResourceLocation.Foot)
+        @Html.NopScripts(this.Url, ResourceLocation.Foot)
+    </body>
+</html>

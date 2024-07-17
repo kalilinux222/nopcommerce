@@ -1,0 +1,86 @@
+
+@media all and (max-width: 990px) {
+
+    #sevenspikes-cloud-zoom:before {
+        display: none;
+    }
+    #sevenspikes-cloud-zoom img {
+        position: static;
+    }
+
+}
+
+@media all and (min-width: 991px){
+
+    .gallery .picture:before {
+        display: none;
+    }
+
+    #quickTab-picture .gallery .picture:before {
+        display: block;
+    }
+
+    /* This is the main image centered. */
+
+    #sevenspikes-cloud-zoom {
+	    width: auto;
+	    overflow: visible;
+	    text-align: center;
+	    line-height: 328px; /*picture height minus 2px*/
+        font-size: 0;
+    }
+    #wrap {
+	    display: inline-block;
+	    line-height: 0;
+	    vertical-align: middle;
+        max-width: 100%;
+    }
+    #wrap img {
+	    position: static;
+	    display: inline !important;
+    }
+
+    /* This is the overlay element. */
+
+    .cloud-zoom-lens {
+	    background-color: #b68c65;	
+	    cursor: crosshair;
+    }
+
+    /* This is the zoom window. */
+
+    #cloudZoomWindowElement {
+        left: 0;
+        z-index: 2;
+    }
+    #cloud-zoom-big {
+	    box-shadow: 0 0 5px #ccc;
+	    overflow: hidden;
+    }
+
+    /* This is the window title. */
+
+    .cloud-zoom-title {
+        background-color: #000;
+        padding: 5px;
+        text-align: center;
+        font-weight: bold;
+        color: #fff;
+        line-height: 16px;
+    }
+
+    /* This is the loading message. */
+
+    .cloud-zoom-loading {
+	    background-color: #000;
+	    padding: 10px;
+	    color: #fff;
+    }
+
+    /* This hides product ribbon when zooming. */
+
+    .gallery .ribbon-wrapper:hover .ribbon-position {
+        opacity: 0;
+    }
+
+}

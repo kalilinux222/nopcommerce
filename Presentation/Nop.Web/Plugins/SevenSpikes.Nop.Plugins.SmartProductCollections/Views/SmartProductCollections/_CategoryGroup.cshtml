@@ -1,0 +1,60 @@
+﻿@using SevenSpikes.Nop.Plugins.SmartProductCollections.Models
+
+@model CategoryGroupModel
+
+@{
+    Layout = "";
+}
+
+<div class="spc-header">
+    <ul class="navigation">
+        @foreach (var tab in Model.Tabs)
+        {
+            <li class="tab" data-sourcetypeid="@tab.SourceType" notloaded>
+                <span>@tab.Name</span>
+            </li>
+        }
+    </ul>
+</div>
+
+<div class="spc-body">
+    <div class="category-info">
+        <h2 class="category-title">
+            <a href="@Url.RouteUrl("Category", new {SeName = Model.SeName})" title="@Model.Name">@Model.Name</a>
+        </h2>
+        @if (Model.SubCategories.Count > 0)
+        {
+            <div class="category-details">
+                <h2 class="category-inner-title">
+                    <a href="@Url.RouteUrl("Category", new {SeName = Model.SeName})" title="@Model.Name">@Model.Name</a>
+                </h2>
+                <ul class="category-sublist">
+                    @foreach (var subcategory in Model.SubCategories)
+                    {
+                        <li>
+                            <a href="@Url.RouteUrl("Category", new {SeName = subcategory.SeName})" title="@subcategory.Name">@subcategory.Name</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+        <div class="category-picture">
+            <a href="@Url.RouteUrl("Category", new {SeName = Model.SeName})" title="@Model.Name">
+                <img src="@Model.PictureModel.FullSizeImageUrl" alt="@Model.PictureModel.Title" />
+            </a>            
+        </div>
+    </div>
+    <div class="category-products">
+        @foreach (var tab in Model.Tabs)
+        {
+            <div class="product-grid" data-sourcetypeid="@tab.SourceType">
+                <div class="item-grid">
+                    @Html.Partial("_Grid", tab.Products)
+                </div>
+            </div>
+        }
+        <div class="loading-overlay">
+            <span>@T("SevenSpikes.SmartProductCollections.Public.Loading")</span>
+        </div>
+    </div>
+</div>

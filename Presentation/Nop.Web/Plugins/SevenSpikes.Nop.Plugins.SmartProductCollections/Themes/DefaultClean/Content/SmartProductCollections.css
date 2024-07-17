@@ -1,0 +1,423 @@
+﻿/*
+* Copyright 2016 Seven Spikes Ltd. All rights reserved. (http://www.nop-templates.com)
+* http://www.nop-templates.com/t/licensinginfo
+*/
+
+
+/* COMMON STYLES */
+
+
+.spc-header {
+	position: relative;
+}
+.spc-header .title {
+	margin: 0 0 30px;
+	border-bottom: 1px solid #ddd;
+	padding: 0 0 15px;
+	font-size: 22px;
+	font-weight: normal;
+	color: #444;
+}
+.spc-header ul {
+	margin: 0 0 30px;
+	border: 1px solid #ddd;
+	font-size: 0;
+}
+.spc-header li {
+	margin: -1px 0 0;
+	border-top: 1px solid #ddd;
+	background-color: #f6f6f6;
+	padding: 14px 24px;
+	font-size: 16px;
+	cursor: pointer;
+}
+.spc-header li.active {
+	background-color: #ddd;
+	color: #444;
+}
+
+.spc-body {
+	position: relative;
+}
+.spc-body .product-grid {
+	display: none;
+	margin: 0;
+}
+.spc-body .product-grid.active {
+	display: block;
+}
+.spc-body .no-data {
+	display: block;
+	padding: 20px 25px;
+}
+
+
+/* LOADING OVERLAY */
+
+
+.spc-body .loading-overlay {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 2;
+	background: rgba(255,255,255,0.9) url('images/loader.gif') center no-repeat;
+}
+.spc-body .loading-overlay span {
+	display: none;
+}
+
+
+/* PRODUCTS */
+
+
+.spc-products {
+	margin: 0 0 50px;
+}
+.spc-products .spc-body .loading-overlay {
+	bottom: 50px; /*loader-overlay fix, depending on item-box bottom margin*/
+}
+
+
+/* CATEGORIES */
+
+
+.spc-categories {
+	margin: 0 0 100px;
+}
+.spc-categories > .loading-overlay {
+    background-color: #fff;
+    line-height: 340px;
+    text-align: center;
+}
+
+.spc-categories .category-info {
+	position: relative;
+	margin: 0 0 40px;
+	border: 1px solid #e9e9e9;
+	background-color: #fff;
+}
+.spc-categories .category-title {
+	display: none;
+}
+.spc-categories .category-details {
+	padding: 15px 30px;
+}
+.spc-categories .category-inner-title {
+	padding: 15px 30px;
+	font-size: 22px;
+	color: #444;
+}
+.spc-categories .category-sublist {
+	margin: 0 0 10px;
+}
+.spc-categories .category-sublist li {
+	padding: 5px 0;
+}
+.spc-categories .category-sublist li a:hover {
+	color: #f74258;
+}
+.spc-categories .category-picture {
+	display: none;
+	font-size: 0;
+}
+.spc-categories .category-picture img {
+	width: 100%;
+}
+
+.spc-categories .category-products {
+	position: relative;
+}
+.spc-categories .product-grid {
+	display: none;
+}
+.spc-categories .product-grid.active {
+	display: block;
+}
+
+.spc-categories .product-item {
+	padding: 0 !important;
+}
+.spc-categories .product-title {
+	height: auto;
+	margin: 0 0 10px;
+}
+.spc-categories .quick-view-button,
+.spc-categories .productQuantityTextBox,
+.spc-categories .productQuantityDropdown {
+	display: none !important;
+}
+
+
+
+@media all and (min-width: 481px) {
+
+.spc-categories .category-info {
+	margin: 0;
+}
+.spc-categories .category-sublist li {
+	display: inline-block;
+	padding: 5px 10px;
+}
+
+.spc-categories .item-box {
+	width: 100% !important;
+	margin: -1px 0 0 !important;
+}
+.spc-categories .product-item {
+	text-align: left;
+}
+.spc-categories .product-item:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.spc-categories .picture {
+	float: left;
+	width: 40%;
+	margin: 0;
+	padding: 20px 10px 20px 20px;
+}
+.spc-categories .details {
+	float: right;
+	width: 60%;
+	padding: 20px 20px 20px 10px;
+}
+.spc-categories .details .product-title,
+.spc-categories .details .prices {
+	padding: 0;
+}
+.spc-categories .buttons-upper,
+.spc-categories .buttons-lower {
+	position: static !important;
+	float: left;
+	width: auto !important;
+	height: auto !important;
+	border: none !important;
+	background-color: transparent;
+}
+.spc-categories input.button-2,
+.spc-categories button.button-2 {
+	width: 36px !important;
+	height: 36px !important;
+	margin: 0 3px 0 0 !important;
+	background-color: #888;
+	background-image: url('images/product-box-sprite.png') !important;
+}
+.spc-categories .add-to-wishlist-button {
+	background-position: -36px center !important;
+}
+.spc-categories .product-box-add-to-cart-button {
+	background-position: right center;
+}
+.spc-categories .product-box-add-to-cart-button span {
+	background-color: transparent !important;
+	font-size: 0 !important;
+}
+.spc-categories .product-box-add-to-cart-button span:before,
+.spc-categories .product-box-add-to-cart-button span:after {
+	display: none !important;
+}
+.spc-categories .product-box-add-to-cart-button:hover {
+	background-color: #f74258;
+}
+
+}
+
+
+@media all and (min-width: 681px) {
+
+.spc-header ul {
+	border: none;
+}
+.spc-header li {
+	display: inline-block;
+	margin: 3px;
+	border: 1px solid #ddd;
+}
+
+
+
+
+
+
+
+
+
+
+.spc-categories .spc-body {
+	border: 1px solid #e9e9e9;
+	background-color: #fff;
+}
+
+.spc-categories .category-info {
+	border: none;
+}
+.spc-categories .category-info:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.spc-categories .category-picture {
+	max-width: 70%;
+	margin: 0 auto 40px;
+}
+
+.spc-categories .item-box {
+	width: 50% !important;
+	clear: none !important;
+	margin: 0 0 -1px !important;
+}
+.spc-categories .product-item {
+	border-color: #f0f0f0;
+}
+.spc-categories .item-box:nth-child(odd) .product-item {
+	border-left-color: transparent !important; /*remove left column left borders*/
+}
+.spc-categories .item-box:nth-child(even) .product-item {
+	border-right-color: transparent !important; /*remove right column right borders*/
+}
+.spc-categories .item-box + .item-box .product-item {
+	border-left-color: transparent !important; /*remove doubled borders between boxes*/
+}
+.spc-categories .product-title {
+	height: 20px;
+	margin: 0 0 8px;
+}
+.spc-categories .product-title a {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.spc-categories .details .prices {
+	margin: 0 0 16px;
+}
+
+}
+
+
+@media all and (min-width: 1001px) {
+
+.spc-header li {
+	margin: 0 0 0 5px;
+}
+
+.spc-products .spc-header .title {
+	text-align: left;
+}
+.spc-products .spc-header ul {
+	position: absolute;
+	top: -8px;
+	right: -3px;
+	margin: 0;
+}
+
+.spc-categories .spc-header {
+	overflow: hidden;
+}
+.spc-categories .spc-header ul {
+	float: right;
+	margin: 0 0 -1px;
+}
+.spc-categories .spc-body:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.spc-categories .category-info {
+	position: relative;
+	z-index: 1;
+	float: left;
+	width: 35%;
+	height: 342px; /*depending on product-grid default height*/
+}
+.spc-categories .category-title {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	background-color: rgba(255,255,255,0.9);
+	font-size: 15px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.spc-categories .category-title a {
+	display: block;
+	padding: 15px 30px;
+}
+.spc-categories .category-details {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	width: 70%;
+	height: 100%;
+	outline: 10px solid #fff;
+	box-shadow: 0 0 7px 8px rgba(0,0,0,0.1);
+	background-color: #fff;
+	padding: 15px 30px;
+	opacity: 0;
+	transition: all 0.3s ease;
+}
+.spc-categories .category-info:hover .category-details {
+	opacity: 1;
+}
+.spc-categories .category-inner-title {
+	padding: 0;
+}
+.spc-categories .category-sublist {
+	padding: 15px;
+}
+.spc-categories .category-sublist li {
+	display: block;
+	padding: 5px 0;
+}
+.spc-categories .category-picture {
+	display: block;
+	max-width: none;
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
+}
+
+.spc-categories .category-products {
+	float: right;
+	width: 65%;
+}
+.spc-categories .product-grid {
+	min-height: 342px; /*equalize height with category-info, based on default item-box x 2)*/
+	overflow: hidden;
+}
+.spc-categories .product-grid .product-item {
+	height: 172px; /*after margins and borders calculation, 2 boxes will precisely fill the height of 342px*/
+}
+.spc-categories .item-box:nth-child(1) .product-item,
+.spc-categories .item-box:nth-child(2) .product-item {
+	border-top-color: transparent !important;
+}
+.spc-categories .product-grid .item-box:hover input.button-2,
+.spc-categories .product-grid .item-box:hover button.button-2 {
+	background-color: #888;
+}
+.spc-categories .product-grid .item-box input.button-2:hover,
+.spc-categories .product-grid .item-box button.button-2:hover {
+	background-color: #f74258;
+}
+
+}
+
+
+@media all and (min-width: 1281px) {
+
+.spc-categories .picture {
+	width: 37%;
+}
+.spc-categories .details {
+	width: 63%;
+}
+
+}

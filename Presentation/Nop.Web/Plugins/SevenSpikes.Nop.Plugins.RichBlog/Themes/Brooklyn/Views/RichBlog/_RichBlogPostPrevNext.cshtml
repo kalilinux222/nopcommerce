@@ -1,0 +1,35 @@
+﻿@using SevenSpikes.Nop.Plugins.RichBlog.Models;
+
+@model RichBlogPrevNextModel
+
+@if (!string.IsNullOrEmpty(Model.PreviousBlogPostTitle) || !string.IsNullOrEmpty(Model.NextBlogPostTitle))
+{
+    <div class='post-navigation'>
+        @if (!string.IsNullOrEmpty(Model.PreviousBlogPostTitle))
+        {
+            <a href='@Model.PreviousBlogPostSeName' title='@Model.PreviousBlogPostTitle' class='prev'>
+                <span class="prev-text">@T("SevenSpikes.RichBlog.PrevText")</span>
+                @if (!string.IsNullOrEmpty(Model.PreviousBlogPostImageUrl))
+                {
+                    <span class='prev-image'><img src='@Model.PreviousBlogPostImageUrl' /></span>
+                }
+
+                <span class='prev-title'>@Model.PreviousBlogPostTitle</span>
+            </a>
+        }
+
+
+        @if (!string.IsNullOrEmpty(Model.NextBlogPostTitle))
+        {
+            <a href='@Model.NextBlogPostSeName' title='@Model.NextBlogPostTitle' class='next'>
+                <span class="next-text">@T("SevenSpikes.RichBlog.NextText")</span>
+                @if (!string.IsNullOrEmpty(Model.NextBlogPostImageUrl))
+                {
+                    <span class='next-image'><img src='@Model.NextBlogPostImageUrl' /></span>
+                }
+
+                <span class='next-title'>@Model.NextBlogPostTitle</span>
+            </a>
+        }
+    </div>
+}

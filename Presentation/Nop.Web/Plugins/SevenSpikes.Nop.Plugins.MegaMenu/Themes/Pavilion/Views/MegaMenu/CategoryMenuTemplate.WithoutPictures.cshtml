@@ -1,0 +1,79 @@
+﻿@** Copyright 2016 Seven Spikes Ltd. All rights reserved. (http://www.nop-templates.com)
+    * http://www.nop-templates.com/t/licensinginfo
+*@
+
+@using Nop.Core.Infrastructure
+@using SevenSpikes.Nop.Plugins.MegaMenu.Domain
+@using SevenSpikes.Nop.Plugins.MegaMenu.Models
+
+@model MegaMenuCategoriesModels
+
+@if (Model.CategoriesModels.Count > 0)
+{
+    var megaMenuSettings = EngineContext.Current.Resolve<MegaMenuSettings>();
+    foreach (var category in Model.CategoriesModels)
+    {
+        <li class="root-category-items">
+            <a href="@Url.RouteUrl("Category", new { SeName = category.CategoryModel.SeName })" title="@category.CategoryModel.Name">@category.CategoryModel.Name</a>
+            @if (category.SubCategories.Count > 0)
+            {
+                <div class="sublist-wrap categories">
+                    <div class="sublist">
+                        <div class="box">
+                            <div class="title">
+                                <strong>@megaMenuSettings.CategoriesColumnTitle</strong>
+                            </div>
+                            <ul>
+                                @{
+                var categoriesCounter = 0;
+                foreach (var subCategory in category.SubCategories)
+                {
+                    categoriesCounter++;
+                    <li>
+                        <a href="@Url.RouteUrl("Category", new { SeName = subCategory.CategoryModel.SeName })" title="@subCategory.CategoryModel.Name">@subCategory.CategoryModel.Name</a>
+                    </li>
+                    if (categoriesCounter == megaMenuSettings.NumberOfCategories && megaMenuSettings.NumberOfCategories != 0)
+                    {
+                        <li>
+                            <a class="view-all" href="@Url.RouteUrl("Category", new { SeName = category.CategoryModel.SeName })" title="@T("SevenSpikes.MegaMenu.ViewAllCategories")">@T("SevenSpikes.MegaMenu.ViewAllCategories")</a>
+                        </li>
+                        break;
+                    }
+                }
+                                }
+                            </ul>
+                        </div>
+                        @if (megaMenuSettings.ShowManufacturersInCategories && category.CategoryManufacturers.Count > 0)
+                        {
+                            <div class="box">
+                                <div class="title">
+                                    <strong>@megaMenuSettings.ManufacturersColumnTitle</strong>
+                                </div>
+                                <ul>
+                                    @{var manufacturerCounter = 0;}
+                                    @foreach (var categoryManufacturer in category.CategoryManufacturers)
+                                    {
+                                        if (manufacturerCounter == megaMenuSettings.NumberOfManufacturersInCategories && megaMenuSettings.NumberOfManufacturersInCategories != 0)
+                                        {
+                                            <li>
+                                                <a class="view-all" href="@Url.RouteUrl("ManufacturerList")" title="@T("SevenSpikes.MegaMenu.ViewAllManufacturers")">@T("SevenSpikes.MegaMenu.ViewAllManufacturers")</a>
+                                            </li>
+
+                                            break;
+                                        }
+
+                                        <li>
+                                            <a href="@Url.RouteUrl("Manufacturer", new { SeName = categoryManufacturer.SeName })" title="@categoryManufacturer.Name">@categoryManufacturer.Name</a>
+                                        </li>
+
+                                        manufacturerCounter++;
+                                    }
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </li>
+    }
+}

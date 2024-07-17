@@ -1,0 +1,19 @@
+﻿@using Nop.Core
+@using Nop.Core.Infrastructure
+@using Nop.Services.Localization
+
+@{
+    string storeName = EngineContext.Current.Resolve<IStoreContext>().CurrentStore.GetLocalized(x => x.Name);
+}
+
+<div class="header">
+    <div class="header-logo">
+        <a href="@Url.RouteUrl("SevenSpikes.Nop.Plugins.FacebookShop.Index")" class="logo">
+            <img title="" alt="@storeName" src="@Url.Content("~/Plugins/SevenSpikes.Nop.Plugins.FacebookShop/Themes/DefaultClean/Content/img/logo.png")">
+        </a>
+    </div>
+    
+    <div class="search-box">
+        @Html.Partial("SearchBox")
+    </div>
+</div>

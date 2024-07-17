@@ -1,0 +1,10 @@
+﻿@model SevenSpikes.Nop.Plugins.UltimateCarousel.Models.CarouselItemModel
+
+@if (string.IsNullOrWhiteSpace(Model.Url))
+{
+    <div class="item-title">@Model.Title</div>
+}
+else
+{
+    <a class="item-title" href="@Model.Url" title="@Model.Title">@Model.Title</a>
+}

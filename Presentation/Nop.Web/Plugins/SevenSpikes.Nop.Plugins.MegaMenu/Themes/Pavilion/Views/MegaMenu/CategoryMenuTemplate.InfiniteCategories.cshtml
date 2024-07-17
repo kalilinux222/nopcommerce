@@ -1,0 +1,60 @@
+﻿@** Copyright 2016 Seven Spikes Ltd. All rights reserved. (http://www.nop-templates.com)
+    * http://www.nop-templates.com/t/licensinginfo
+*@
+
+@using Nop.Core.Infrastructure
+@using SevenSpikes.Nop.Plugins.MegaMenu.Domain
+@using SevenSpikes.Nop.Plugins.MegaMenu.Models
+
+@model MegaMenuCategoriesModels
+
+@if (Model.CategoriesModels.Count > 0)
+{
+    var megaMenuSettings = EngineContext.Current.Resolve<MegaMenuSettings>();
+
+    if (megaMenuSettings.ShowCategoriesInASingleMenuItem)
+    {
+        <li class="mega-menu-categories category-menu-item infinite-categories-menu-item">
+            <span class="with-subcategories products-item-menu labelfornextplusbutton">@megaMenuSettings.MenuItemName</span>
+            <div class="plus-button"></div>
+            <div class="sublist-wrap">
+                <ul class="sublist">
+                    <li class="back-button">
+                        <span>@T("SevenSpikes.MegaMenu.ResponsiveBackButton")</span>
+                    </li>
+                    @CreateSubLists(Model.CategoriesModels)
+                </ul>
+            </div>
+        </li>
+    }
+    else
+    {
+        @CreateSubLists(Model.CategoriesModels)
+    }
+}
+
+@helper CreateSubLists(IList<MegaMenuCategoryModel> category)
+{
+    foreach (var subCategory in category)
+    {
+        <li class="mega-menu-categories root-category-items">
+            @if (subCategory.SubCategories.Count > 0)
+            {
+                <a href="@Url.RouteUrl("Category", new { SeName = subCategory.CategoryModel.SeName })" title="@subCategory.CategoryModel.Name" class="with-subcategories">@subCategory.CategoryModel.Name</a>
+                <div class="plus-button"></div>
+                <div class="sublist-wrap">
+                    <ul class="sublist">
+                        <li class="back-button">
+                            <span>@T("SevenSpikes.MegaMenu.ResponsiveBackButton")</span>
+                        </li>
+                        @CreateSubLists(subCategory.SubCategories)
+                    </ul>
+                </div>
+            }
+            else
+            {
+                <a class="lastLevelCategory" href="@Url.RouteUrl("Category", new { SeName = subCategory.CategoryModel.SeName })" title="@subCategory.CategoryModel.Name">@subCategory.CategoryModel.Name</a>
+            }
+        </li>
+    }
+}
